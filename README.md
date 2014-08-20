@@ -1,7 +1,7 @@
 binario [![Build Status](https://drone.io/github.com/asaskevich/binario/status.png)](https://drone.io/github.com/asaskevich/binario/latest)
 =====
 Simple work with binary data in Python.
-[![Downloads](https://pypip.in/download/binario/badge.svg)](https://pypi.python.org/pypi/binario/) [![Latest Version](https://pypip.in/version/binario/badge.svg)](https://pypi.python.org/pypi/binario/)
+[![Coverage Status](https://coveralls.io/repos/asaskevich/binario/badge.png?branch=master)](https://coveralls.io/r/asaskevich/binario?branch=master) [![Downloads](https://pypip.in/download/binario/badge.svg)](https://pypi.python.org/pypi/binario/) [![Latest Version](https://pypip.in/version/binario/badge.svg)](https://pypi.python.org/pypi/binario/)
 
 What is the binario?
 -------- 
