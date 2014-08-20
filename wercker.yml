@@ -1,6 +1,0 @@
-box: wercker/python@3.2.3
-build:
-  steps:
-    - script:
-          name: tests
-          code: python tests.py
