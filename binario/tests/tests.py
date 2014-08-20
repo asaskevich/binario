@@ -40,7 +40,3 @@ class AllTests(unittest.TestCase):
         self.assertEqual(self.r.read_string(), "Hi")
         self.assertEqual(self.r.read_double(), 3.14)
         self.assertEqual(self.r.get_remaining_size(), 0)
-
-
-if __name__ == '__main__':
-    unittest.main()

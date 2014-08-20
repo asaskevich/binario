@@ -42,7 +42,13 @@ b'\x80\x14\n\xff\x00'
 
 How to install this package?
 ----------------------------
-Just type in your terminal `pip install binario`
+Just type in your terminal
+
+>>> pip install binario
+
+Where to find documentation?
+----------------------------
+I make it later ;)
 
 Contribution
 ------------
