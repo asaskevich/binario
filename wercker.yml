@@ -1,4 +1,4 @@
-box: wercker/python
+box: wercker/python@3.2.3
 build:
   steps:
     - script:
