@@ -1,0 +1,9 @@
+box: wercker/python
+build:
+  steps:
+    - script:
+          name: tests
+          code: python tests.py
+    - script:
+          name: pypi deploy
+          code: ./deploy.sh
