@@ -1,14 +1,17 @@
 binario [![wercker status](https://app.wercker.com/status/82a298a17050f435db99ef625e569a38/s "wercker status")](https://app.wercker.com/project/bykey/82a298a17050f435db99ef625e569a38)
-======
+=====
 Simple work with binary data.
 
-### What is the binario?
+What is the binario?
+-------- 
 **binario** is the Python package that lets an application read/write primitive data types from an underlying input/output stream as binary data.
 
-### And which primitive data types it can process?
+And which primitive data types it can process?
+-------- 
 It can work with booleans, integers, shorts, long integers, floats, doubles, strings and any byte buffers.
 
-### How to write data?
+How to write data?
+-------- 
 It's simple. Just create instance of `Writer` and then do your work:
 ```python
 >>> import binario
@@ -20,7 +23,8 @@ It's simple. Just create instance of `Writer` and then do your work:
 >>> w.write(bytes([128, 20, 10, 255, 0]))
 ```
 
-### And how to read data?
+And how to read data?
+-------- 
 It's simple too. Like outputting, create `Reader` and then do your work:
 ```python
 >>> import binario
@@ -37,6 +41,8 @@ True
 b'\x80\x14\n\xff\x00'
 ```
 
-### How to install this package?
+How to install this package?
+-------- 
 
-### Contribution
+Contribution
+-------- 
