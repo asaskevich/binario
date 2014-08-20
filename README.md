@@ -1,4 +1,4 @@
-binario
+binario [![wercker status](https://app.wercker.com/status/82a298a17050f435db99ef625e569a38/s "wercker status")](https://app.wercker.com/project/bykey/82a298a17050f435db99ef625e569a38)
 ======
 Simple work with binary data.
 
