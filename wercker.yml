@@ -4,9 +4,3 @@ build:
     - script:
           name: tests
           code: python tests.py
-
-deploy:
-    steps:
-        - script:
-            name: pypi deploy
-            code: ./deploy.sh
