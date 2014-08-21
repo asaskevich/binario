@@ -2,6 +2,7 @@ __author__ = 'Alex Saskevich'
 
 from .reader import *
 from .writer import *
+from .byte_order import *
 
 """
 binario is the package that lets an application read/write primitive data types

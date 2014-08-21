@@ -1,4 +1,5 @@
 from struct import unpack
+from .byte_order import *
 import os
 
 
@@ -12,11 +13,21 @@ class Reader:
     # Count of already read bytes.
     read_count = 0
     is_closed_flag = False
+    # Byte order, by default - NETWORK or BIG_ENDIAN
+    byte_order = "!"
 
-    def __init__(self, file_name):
-        """ Create new Reader instance and open file for reading. """
+    def __init__(self, file_name, byte_ordering=NETWORK):
+        """
+        Create new Reader instance and open file for reading.
+        If it necessary, you can specify byte order - little-endian or big-endian.
+        By default byte order is network(big-endian).
+        """
         self.file = open(file_name, "rb")
         self.file_size = os.path.getsize(file_name)
+        if byte_ordering == LITTLE_ENDIAN:
+            self.byte_order = "<"
+        elif byte_ordering == BIG_ENDIAN:
+            self.byte_order = ">"
 
     def __enter__(self):
         return self
@@ -58,6 +69,12 @@ class Reader:
         """ Return remaining count of bytes, available for reading. """
         return self.file_size - self.read_count
 
+    def seek(self, pos):
+        """ Move to new input file position. If position is negative or out of file, raise Exception. """
+        if (pos > self.file_size) or (pos < 0):
+            raise Exception("Unable to seek - position out of file!")
+        self.file.seek(pos)
+
     def read(self, size=1):
         """
         Read byte buffer with specified size from input file.
@@ -91,24 +108,24 @@ class Reader:
     def read_int(self):
         """ Read signed integer from the underlying input file as a 4-byte value.  """
         buf = self.read(4)
-        return unpack("!i", buf)[0]
+        return unpack(self.byte_order + "i", buf)[0]
 
     def read_short(self):
         """ Read signed short from the underlying input file as a 2-byte value.  """
         buf = self.read(2)
-        return unpack("!h", buf)[0]
+        return unpack(self.byte_order + "h", buf)[0]
 
     def read_long(self):
         """ Read signed long from the underlying input file as a 8-byte value.  """
         buf = self.read(8)
-        return unpack("!q", buf)[0]
+        return unpack(self.byte_order + "q", buf)[0]
 
     def read_float(self):
         """ Read float from the underlying input file as a 4-byte value.  """
         buf = self.read(4)
-        return unpack("!f", buf)[0]
+        return unpack(self.byte_order + "f", buf)[0]
 
     def read_double(self):
         """ Read double from the underlying input file as a 8-byte value.  """
         buf = self.read(8)
-        return unpack("!d", buf)[0]
+        return unpack(self.byte_order + "d", buf)[0]

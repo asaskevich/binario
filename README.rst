@@ -22,7 +22,6 @@ It's simple. Just create instance of `Writer` and then do your work:
 >>> w.write_string("Hello, world!")
 >>> w.write(bytes([128, 20, 10, 255, 0]))
 
-
 And how to read data?
 ---------------------
 It's simple too. Like outputting, create `Reader` and then do your work:
@@ -39,6 +38,27 @@ True
 "Hello, world!"
 >>> r.read(5)
 b'\x80\x14\n\xff\x00'
+
+Which byte order specified by default?
+--------------------------------------
+By default it is `network` order (or `big-endian`).
+
+Okay, it is good, but if I want to change byte order for `Reader` or `Writer`?
+------------------------------------------------------------------------------
+Not a problem! Just specify it:
+
+>>> import binario
+>>> r = binario.Reader("file.dat", binario.LITTLE_ENDIAN)
+>>> w = binario.Writer("another_file.dat", binario.BIG_ENDIAN)
+
+
+What about append new data to existing file?
+--------------------------------------------
+Yeah, it is also very simple:
+
+>>> import binario
+>>> w = binario.Writer("incomplete_file.dat", append=True)
+
 
 How to install this package?
 ----------------------------

@@ -1,4 +1,6 @@
 from struct import pack
+from .byte_order import *
+import os
 
 
 class Writer:
@@ -9,10 +11,28 @@ class Writer:
     # The number of bytes written to the output file so far.
     written = 0
     is_closed_flag = False
+    # Byte order, by default - NETWORK or BIG_ENDIAN
+    byte_order = "!"
+    # Mode - append new data to the end of file or rewrite it
+    # By default - rewrite file
+    mode = "wb"
 
-    def __init__(self, file_name):
-        """ Create new Writer instance and open file for writing. """
-        self.file = open(file_name, "wb")
+    def __init__(self, file_name, byte_ordering=NETWORK, append=False):
+        """
+        Create new Writer instance and open file for writing.
+        If it necessary, you can specify byte order - little-endian or big-endian.
+        By default byte order is network(big-endian).
+        Also you can specify write mode - rewrite existing file or append new data to the end of file.
+        By default it will be rewriting existing files.
+        """
+        if append:
+            self.mode = "ab"
+            self.written = os.path.getsize(file_name)
+        self.file = open(file_name, self.mode)
+        if byte_ordering == LITTLE_ENDIAN:
+            self.byte_order = "<"
+        elif byte_ordering == BIG_ENDIAN:
+            self.byte_order = ">"
 
     def __enter__(self):
         return self
@@ -61,32 +81,32 @@ class Writer:
 
     def write_short(self, number):
         """ Writes a short integer to the underlying output file as a 2-byte value. """
-        buf = pack("!h", number)
+        buf = pack(self.byte_order + "h", number)
         self.write(buf)
 
     def write_int(self, number):
         """ Writes a integer to the underlying output file as a 4-byte value. """
-        buf = pack("!i", number)
+        buf = pack(self.byte_order + "i", number)
         self.write(buf)
 
     def write_long(self, number):
         """ Writes a long integer to the underlying output file as a 8-byte value. """
-        buf = pack("!q", number)
+        buf = pack(self.byte_order + "q", number)
         self.write(buf)
 
     def write_string(self, string):
         """ Writes a string to the underlying output file as a buffer of chars with UTF-8 encoding. """
-        buf = bytes(string, "UTF-8")
+        buf = bytes(string, 'UTF-8')
         length = len(buf)
         self.write_int(length)
         self.write(buf)
 
     def write_float(self, number):
         """ Writes a float to the underlying output file as a 4-byte value. """
-        buf = pack("!f", number)
+        buf = pack(self.byte_order + "f", number)
         self.write(buf)
 
     def write_double(self, number):
         """ Writes a double to the underlying output file as a 8-byte value. """
-        buf = pack("!d", number)
+        buf = pack(self.byte_order + "d", number)
         self.write(buf)
