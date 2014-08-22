@@ -69,5 +69,8 @@ $ pip install binario
 $ pip install binario --upgrade
 ```
 
+### Documentation
+http://binarios-docs.readthedocs.org/en/latest/
+
 ### Contribution
 If you do have a contribution for the package feel free to put up a Pull Request or open Issue on GitHub repo.
