@@ -3,7 +3,7 @@ binario [![Build Status](https://drone.io/github.com/asaskevich/binario/status.p
 Simple work with binary data in Python.
 
 [![Coverage Status](https://coveralls.io/repos/asaskevich/binario/badge.png?branch=master)](https://coveralls.io/r/asaskevich/binario?branch=master) [![PyPI version](https://badge.fury.io/py/binario.svg)](http://badge.fury.io/py/binario)
-[![PyPi downloads](http://img.shields.io/pypi/dm/binario.svg)](https://pypi.python.org/pypi/binario/) [![Supported Python versions](https://pypip.in/py_versions/binario/badge.svg)](https://pypi.python.org/pypi/binario/) [![Development Status](https://pypip.in/status/binario/badge.svg)](https://pypi.python.org/pypi/binario/)
+[![PyPi downloads](http://img.shields.io/pypi/dm/binario.svg)](https://pypi.python.org/pypi/binario/) [![Supported Python versions](https://img.shields.io/pypi/pyversions/binario.svg)](https://pypi.python.org/pypi/binario/) [![Development Status](https://img.shields.io/pypi/status/binario.svg)](https://pypi.python.org/pypi/binario/)
 
 ### What is the binario?
 **binario** is the Python package that lets an application read/write primitive data types from an underlying input/output stream as binary data.
